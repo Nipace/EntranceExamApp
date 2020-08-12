@@ -17,6 +17,15 @@
     <div class="card-body">
         <h2 class="card-title text-center"> Student Information</h2>
         <p>Please enter your information to proceed further.</p>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <form action="{{route('student.store', request()->route()->set)}}" method="POST">
             @csrf
             <div class="form-group">
@@ -25,7 +34,15 @@
             </div>
             <div class="form-group">
                 <label for="student-rollnumber">Roll Number <span class="text-danger">*</span></label>
-                <input type="text" name="student_rollnumber" class="form-control" id="student-rollnumber">
+                <input type="text" name="roll_number" class="form-control" id="student-rollnumber">
+            </div>
+            <div class="form-group">
+                <label for="school-name">Previous School Name <span class="text-danger">*</span></label>
+                <input type="text" name="school" class="form-control" id="school-name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="text-danger">*</span></label>
+                <input type="text" name="phone" class="form-control" id="phone">
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success">Submit</button>

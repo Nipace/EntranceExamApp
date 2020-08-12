@@ -13,6 +13,7 @@ class QuestionController extends Controller
     public function index($set, $roll)
     {
         $question = QuestionAnswer::where('set',$set)->simplePaginate(1);
+       
         $student = Student::where('roll_number',$roll)->get();
         return view('frontend.question',compact('question','student'));
     }
@@ -41,9 +42,13 @@ class QuestionController extends Controller
         $student = Student::where('roll_number',$roll)->get();
         $total_answer = StudentAnswer::where('roll_number',$roll)->get();
         $total_answer = \count($total_answer);
-        $right_answer = StudentAnswer::where('is_right','yes')->where('roll_number',$roll)->get();
-        $right_answer = count($right_answer);
-        return view('frontend.thankyou',compact('student','total_answer','right_answer'));
+        $rightAnswer = StudentAnswer::where('is_right','yes')->where('roll_number',$roll)->get();
+        $right_answer = count($rightAnswer);
+      
+         return view('frontend.thankyou',compact('student','total_answer','right_answer'));
+     
+        
+
 
     }
 }

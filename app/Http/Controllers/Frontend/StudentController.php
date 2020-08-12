@@ -15,11 +15,19 @@ class StudentController extends Controller
 
     public function store(Request $request, $set)
     {
+        $validatedData = $request->validate([
+            'student_name' => 'required',
+            'roll_number' => 'required|unique:students|numeric',
+            'phone'=>'required|numeric',
+            'school'=>'required',
+        ]);
         $student = new Student();
         $student->student_name = $request->student_name;
-        $student->roll_number = $request->student_rollnumber;
+        $student->roll_number = $request->roll_number;
+        $student->school = $request->school;
+        $student->phone = $request->phone;
         $student->save();
-        $student_name = $request->student_name;
-        return redirect(route('studentquestion.index',['set'=>$set, 'roll'=>$request->student_rollnumber]))->with('student_name');
+        return redirect(route('studentquestion.index',['set'=>$set, 'roll'=>$request->roll_number]))->with('student_name');
     }
+    
 }

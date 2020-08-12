@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Omega Entrance',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b style="color:purple">Omega</b> Entrance',
+    'logo_img' => '/img/omegalogo2.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -231,11 +231,11 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
+        // [
+        //     'text' => 'search',
+        //     'search' => true,
+        //     'topnav' => true,
+        // ],
       
         ['header' => 'account_settings'],
         [
@@ -277,6 +277,14 @@ return [
             'text' => 'Set 5',
             'url'  => 'admin/5/question',
             'icon' => 'fas fa-tasks',
+            'icon_color'=>'red',
+
+        ],
+        ['header' => 'RESULT'],
+        [
+            'text' => 'View Result',
+            'url'  => 'admin/student',
+            'icon' => 'fas fa-fw fa-user',
             'icon_color'=>'red',
 
         ],
