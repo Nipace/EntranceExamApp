@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <h3 class="text-purple"> Add New Question</h3>
+@if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>        
+        @endif
 <hr>
 <div class="container">
     <form action="{{route('question.store',$set)}}" method="POST">
@@ -10,7 +18,7 @@
         @error('question')
             <h6 class="text-danger">{{ $message }}</h6>
         @enderror
-        <textarea class="description" name="description"></textarea>
+        <textarea class="description" name="question"></textarea>
         <small id="emailHelp" class="form-text text-muted">Enter your Question </small>
     </div>
     <hr>

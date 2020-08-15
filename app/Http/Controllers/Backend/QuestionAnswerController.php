@@ -17,7 +17,7 @@ class QuestionAnswerController extends Controller
      */
     public function index($set)
     {
-        $question = QuestionAnswer::where('set',$set)->paginate(1);
+        $question = QuestionAnswer::where('set',$set)->paginate(5);
         return view('backend.question.index',compact('question','set'));
     }
 
@@ -49,7 +49,7 @@ class QuestionAnswerController extends Controller
        $question->right_answer = $request->right_answer;
        $question->set = $set;
        $question->save();
-       return redirect(route('question.index',$set));
+       return redirect()->back()->with('success','Question  Added successfully');
     }
 
     /**
@@ -69,9 +69,11 @@ class QuestionAnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($set, $questionId)
     {
-        //
+  
+        $question = QuestionAnswer::find($questionId);
+        return view('backend.question.edit',compact('question','set'));
     }
 
     /**
@@ -81,9 +83,20 @@ class QuestionAnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $set, $questionId)
     {
-        //
+        $question = QuestionAnswer::find($questionId);
+        $question->question = $request->question;
+        $question->option1 = $request->option1;
+        $question->option2 = $request->option2;
+        $question->option3 = $request->option3;
+        $question->option4 = $request->option4;
+        $question->marks = $request->marks;
+        $question->right_answer = $request->right_answer;
+        $question->set = $set;
+        $question->save();
+        return redirect()->back()->with('success','Question  Updated successfully');
+
     }
 
     /**
@@ -92,8 +105,10 @@ class QuestionAnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($set, $questionId)
     {
-        //
+        $question = QuestionAnswer::find($questionId);
+        $question->delete();
+        return redirect()->back();
     }
 }

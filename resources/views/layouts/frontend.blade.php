@@ -21,7 +21,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+    <style>
+                 @media print {
+  #printPageButton {
+    display: none;
+  }
+}     
+    </style>
 </head>
 <body>
     <div id="app">

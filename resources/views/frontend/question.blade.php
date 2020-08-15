@@ -42,7 +42,7 @@
         <form action="{{route('studentquestion.store', ['set'=>request()->route()->set,'roll'=>request()->route()->roll])}}" method="POST" class="border mb-3">
             @csrf
             @foreach($question as $questions)
-                <label class ="mt-2 ml-3" for="student-name">Q.{{$questions->id}} {{$questions->question}} <span class="">({{$questions->marks}} marks)</span></label>
+                <label class ="mt-2 ml-3" for="student-name">{!!$questions->question!!} </label>
               
                 <div class="form-check ml-3">
                     <input class="form-check-input" type="radio" name="answer" id="answer" value="{{$questions->option1}}" checked>

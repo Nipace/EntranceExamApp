@@ -18,12 +18,17 @@
     </div>
 </div>
 <div class="d-flex flex-row justify-content-center">
-            <h5 class="pt-3">Total Questions Answered: {{$total_answer}}</h5>
+<h5 class="pt-3">Student Name: {{$students->student_name}}</h5>
+
 </div>
+<h5 class="text-center">Roll Number: {{$students->roll_number}}</h5>
+<h5 class="text-center">Previous School: {{$students->school}}</h5>
+<h5 class="text-center">Contact Number: {{$students->phone}}</h5>
+<h5 class="text-center">Total Questions Answered: {{$total_answer}}</h5>
             <h5 class=" text-center">Right Answer: {{$right_answer}}</h5>          
             <hr class="bg-grey" width="30%">
             <div class="d-flex flex-row justify-content-center ml-5">
-            <button class = "btn btn-purple" style="margin-left:200px;" onClick="window.print()"> Print <i class="fas fa-print"></i> </button>
+            <button class = "btn btn-purple" style="margin-left:200px;" onClick="window.print()" id="printPageButton"> Print <i class="fas fa-print"></i> </button>
             </div>
             
 @endsection

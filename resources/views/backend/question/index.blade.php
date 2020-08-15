@@ -11,15 +11,29 @@
             <th scope="col">Question</th>
             <th scope="col">Marks</th>
             <th scope="col">Right Answer</th>
+            <th scope="col">Operations</th>
             </tr>
         </thead>
+        <?php
+            $i=1;
+        ?>
         <tbody>
             @foreach($question as $questions)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>{{$questions->question}}</td>
+                    <th scope="row">{{$i++}}</th>
+                    <td>{!!$questions->question!!}</td>
                     <td>{{$questions->marks}}</td>
                     <td>{{$questions->right_answer}}</td>
+                   
+                    <td>
+                    <form action="{{route('question.destroy',[$set,$questions->id])}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <a href="{{route('question.edit',[$set,$questions->id])}}" class="btn btn-sm btn-success">Edit</a>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                    </td>
+                   
                 </tr>
             @endforeach
         </tbody>
